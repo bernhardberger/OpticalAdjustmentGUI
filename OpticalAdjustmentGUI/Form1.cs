@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 
 namespace OpticalAdjustmentGUI
 {
@@ -11,6 +12,9 @@ namespace OpticalAdjustmentGUI
         public Form1()
         {
             InitializeComponent();
+            Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+            Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator = ".";
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
