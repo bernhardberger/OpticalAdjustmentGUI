@@ -76,7 +76,8 @@ namespace OpticalAdjustmentGUI
 
         protected void deactivate()
         {
-            string toolPath = "DisableOpticalAdjustment.bat"; // Replace with the actual path to the command-line tool if it's located elsewhere
+            string toolPath = "OpticalAdjustment.exe"; // Replace with the actual path to the command-line tool if it's located elsewhere
+            string arguments = $"--value=-1.0";
 
             ProcessStartInfo processStartInfo = new ProcessStartInfo(toolPath);
             processStartInfo.CreateNoWindow = true;       // Hide the process window
