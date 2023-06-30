@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Globalization;
+using System.Security.Policy;
 
 namespace OpticalAdjustmentGUI
 {
@@ -177,6 +178,24 @@ namespace OpticalAdjustmentGUI
         private void btnSave_Click(object sender, EventArgs e)
         {
             this.save(this.value);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            string surveyUrl = "https://survey-eu1.hsforms.com/1WFHW3LFKRCe-_LaO0_m_cAfa586";
+            try
+            {
+                Process.Start(new ProcessStartInfo() { FileName = surveyUrl, UseShellExecute = true });
+            }
+            catch (System.ComponentModel.Win32Exception noBrowser)
+            {
+                if (noBrowser.ErrorCode == -2147467259)
+                    MessageBox.Show(noBrowser.Message);
+            }
+            catch (System.Exception other)
+            {
+                MessageBox.Show(other.Message);
+            }
         }
     }
 }

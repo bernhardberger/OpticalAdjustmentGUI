@@ -37,6 +37,7 @@
             btnSave = new Button();
             checkBox2 = new CheckBox();
             pictureBox1 = new PictureBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -44,7 +45,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(127, 10);
+            label1.Location = new Point(127, 12);
             label1.Name = "label1";
             label1.Size = new Size(78, 15);
             label1.TabIndex = 1;
@@ -62,6 +63,7 @@
             // 
             // numericUpDown1
             // 
+            numericUpDown1.BorderStyle = BorderStyle.FixedSingle;
             numericUpDown1.DecimalPlaces = 2;
             numericUpDown1.Increment = new decimal(new int[] { 5, 0, 0, 131072 });
             numericUpDown1.Location = new Point(211, 8);
@@ -131,12 +133,24 @@
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.Location = new Point(12, 536);
+            button1.Name = "button1";
+            button1.Size = new Size(462, 36);
+            button1.TabIndex = 10;
+            button1.Text = "Share results with Varjo...";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(486, 540);
+            ClientSize = new Size(486, 581);
+            Controls.Add(button1);
             Controls.Add(pictureBox1);
             Controls.Add(checkBox2);
             Controls.Add(btnSave);
@@ -166,5 +180,6 @@
         private Button btnSave;
         private CheckBox checkBox2;
         private PictureBox pictureBox1;
+        private Button button1;
     }
 }
