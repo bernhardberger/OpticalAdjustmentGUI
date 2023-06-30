@@ -22,6 +22,12 @@ namespace OpticalAdjustmentGUI
         {
             this.disableControls();
 
+            if (!File.Exists("OpticalAdjustment.exe"))
+            {
+                var res = MessageBox.Show($"File not found: OpticalAdjustment.exe\n\nPlease move this tool to the same folder your OpticalAdjustment.exe is in!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+
             if (this.checkBox1.Checked)
             {
                 this.btnApply.Enabled = false;
@@ -32,16 +38,15 @@ namespace OpticalAdjustmentGUI
                 this.btnSave.Enabled = false;
             }
 
-            if (File.Exists(this.filePath))
+            if (!File.Exists(this.filePath))
             {
-                string content = File.ReadAllText(filePath);
-                this.value = Decimal.Parse(content);
-                numericUpDown1.Text = content;
+                File.CreateText(filePath).Dispose();
+                File.WriteAllText(filePath, "-0.4");
             }
-            else
-            {
 
-            }
+            string content = File.ReadAllText(filePath);
+            this.value = Decimal.Parse(content);
+            numericUpDown1.Text = content;
         }
 
         private void btnApply_Click(object sender, EventArgs e)
@@ -87,7 +92,20 @@ namespace OpticalAdjustmentGUI
 
         protected void save(Decimal value)
         {
-            File.WriteAllText(this.filePath, value.ToString());
+            try
+            {
+                File.WriteAllText(filePath, value.ToString());
+            }
+            catch (FileNotFoundException ex)
+            {
+                // Handle the exception when the file is not found
+                MessageBox.Show($"File not found: {ex.FileName}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                // Handle other exceptions
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void disableControls()
