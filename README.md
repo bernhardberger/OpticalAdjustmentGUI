@@ -1,4 +1,4 @@
-# OpticalAdjustmentGUI
+# OpticalAdjustmentGUI (for Varjo's Redshift fix CLI tool)
 
 Place this .exe in the same directory as the `OpticalAdjustment.exe`
 
